@@ -2,32 +2,60 @@
 /**
  * Write a description of class Command here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (July 2013)
  */
 public class Command
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private String commandWord;
+    private String secondWord;
 
     /**
      * Constructor for objects of class Command
      */
-    public Command()
+    public Command(String firstWord, String secondWord)
     {
-        // initialise instance variables
-        x = 0;
+        commandWord = firstWord;
+        this.secondWord = secondWord;
+    }
+    
+    /**
+     * Execute a command
+     */
+    public void execute(Command c)
+    {
+        //executes a command
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Return command word
      */
-    public int sampleMethod(int y)
+    public String getCommandWord()
     {
-        // put your code here
-        return x + y;
+        return commandWord;
+    }
+    
+    /**
+     * Return second word
+     */
+    public String getSecondWord()
+    {
+        return secondWord;
+    }
+    
+    /**
+     * Return true if command is unknown
+     */
+    public boolean isUnknown()
+    {
+        return (commandWord == null);
+    }
+    
+    /**
+     * Return true if the command has a second word
+     */
+    public boolean hasSecondWord()
+    {
+        return (secondWord != null);
     }
 }

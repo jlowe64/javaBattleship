@@ -1,33 +1,46 @@
 
 /**
- * Write a description of class Game here.
+ * This class is the main class for playing Battleships.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler 
+ * @version 1.0 (July 2013)
  */
 public class Game
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private Parser parser;
 
     /**
-     * Constructor for objects of class Game
+     * Create the game and initialise the grids
      */
     public Game()
     {
-        // initialise instance variables
-        x = 0;
+        parser = new Parser();
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Create grids
      */
-    public int sampleMethod(int y)
+    private void createGrids()
     {
-        // put your code here
-        return x + y;
+        
+    }
+    
+    /**
+     * Main play routine. Loops until one player's fleet is sunk.
+     */
+    public void play()
+    {
+        printOpening();
+    }
+    
+    /**
+     * Opening statement
+     */
+    private void printOpening()
+    {
+        System.out.println();
+        System.out.println("Welcome to Battleships");
+        System.out.println("Type 'help' if you need help.");
+        System.out.println();
     }
 }
