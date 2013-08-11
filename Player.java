@@ -1,22 +1,21 @@
 
 /**
- * Write a description of class Player here.
+ * This is the Player class used for creating Players
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class Player
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variables
+    private String playerName;
 
     /**
      * Constructor for objects of class Player
      */
-    public Player()
+    public Player(String s)
     {
-        // initialise instance variables
-        x = 0;
+        s = playerName;
     }
 
     /**
@@ -25,9 +24,8 @@ public class Player
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public String getName()
     {
-        // put your code here
-        return x + y;
+        return playerName;
     }
 }

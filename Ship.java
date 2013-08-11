@@ -2,32 +2,43 @@
 /**
  * Write a description of class Ship here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler 
+ * @version 1.0 (August 2013)
  */
 public class Ship
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variables
+    private int hitPoints;
+    private int size;
 
     /**
      * Constructor for objects of class Ship
      */
-    public Ship()
+    public Ship(int size)
     {
-        // initialise instance variables
-        x = 0;
+        this.size = hitPoints;
+        this.size = size;
     }
-
+    
     /**
      * An example of a method - replace this comment with your own
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public int getSize()
     {
-        // put your code here
-        return x + y;
+        return size;
+    }
+    
+    public int numberOfHitpoints()
+    {
+        return hitPoints;
+    }
+    
+    //Method to remove hitpoints from a ship
+    public void hit()
+    {
+        hitPoints -= 1;
     }
 }

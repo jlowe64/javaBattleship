@@ -1,38 +1,32 @@
 
 /**
- * Write a description of class Command here.
+ * Write a description of class Command here. Command is a SuperClass
+ * with many subclasses of Commands.
  * 
  * @author Jerrett Fowler
  * @version 1.0 (July 2013)
  */
-public class Command
+public abstract class Command //Why use abstract: http://stackoverflow.com/questions/7262892/java-best-practices-put-get-subclass-objects-into-hashmap-that-expects-supercla
 {
-    private String commandWord;
     private String secondWord;
 
     /**
      * Constructor for objects of class Command
      */
-    public Command(String firstWord, String secondWord)
+    public Command()
     {
-        commandWord = firstWord;
-        this.secondWord = secondWord;
+        secondWord = null;
     }
     
     /**
-     * Execute a command
+     * An example of a method - replace this comment with your own
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
      */
-    public void execute(Command c)
+    public void setSecondWord(String secondWord)
     {
-        //executes a command
-    }
-
-    /**
-     * Return command word
-     */
-    public String getCommandWord()
-    {
-        return commandWord;
+        this.secondWord = secondWord;
     }
     
     /**
@@ -42,15 +36,7 @@ public class Command
     {
         return secondWord;
     }
-    
-    /**
-     * Return true if command is unknown
-     */
-    public boolean isUnknown()
-    {
-        return (commandWord == null);
-    }
-    
+ 
     /**
      * Return true if the command has a second word
      */

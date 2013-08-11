@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 /**
  * CommandWords holds all subclasses for Commands
@@ -8,220 +9,41 @@
 public class CommandWords
 {
     // variables
+    private HashMap<String,Command> commands;
     
     /**
      * Constructor for objects of class CommandWords
      */
-    public CommandWords(Command c)
+    public CommandWords()
     {
-        // Stuff
+        commands = new HashMap<String,Command>();
+  
+        // Add commands
+        commands.put("START", new StartCommand());
+        commands.put("SUPPORTS", new SupportsCommand());
+        commands.put("YES", new YesCommand());
+        commands.put("NO", new NoCommand());
+        commands.put("END", new EndCommand());
+        commands.put("FIRSTGO", new FirstGoCommand());
+        commands.put("READY", new ReadyCommand());
+        commands.put("TALK", new TalkCommand());
+        commands.put("FIRE", new FireCommand());
+        commands.put("MISS", new MissCommand());
+        commands.put("HIT", new HitCommand());
+        commands.put("SUNK", new SunkCommand());
+        commands.put("ILOSE", new ILoseCommand());
+        commands.put("SHIP", new ShipCommand());
+        commands.put("STRING", new StringCommand());
+        commands.put("INT", new IntCommand());
     }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Start extends CommandWords
-{
-    // variables
     
-    private Start()
+    // Method to check if command is valid
+    
+    // Method to return command
+    public Command getCommand(String s)
     {
-        //Stuff
+        return commands.get(s);
     }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Supports extends CommandWords
-{
-    // variables
     
-    private Supports()
-    {
-        //Stuff
-    } 
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Yes extends CommandWords
-{
-    // variables
-    
-    private Yes()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class No extends CommandWords
-{
-    // variables
-    
-    private No()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class End extends CommandWords
-{
-    // variables
-    
-    private End()
-    {
-        //Stuff
-    } 
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class FirstGo extends CommandWords
-{
-    // variables
-    
-    private FirstGo()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Ready extends CommandWords
-{
-    // variables
-    
-    private Ready()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Talk extends CommandWords
-{
-    // variables
-    
-    private Talk()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Fire extends CommandWords
-{
-    // variables
-    
-    private Fire()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Miss extends CommandWords
-{
-    // variables
-    
-    private Miss()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Hit extends CommandWords
-{
-    // variables
-    
-    private Hit()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Sunk extends CommandWords
-{
-    // variables
-    
-    private Sunk()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class ILose extends CommandWords
-{
-    // variables
-    
-    private ILose()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Ship extends CommandWords
-{
-    // variables
-    
-    private Ship()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class String extends CommandWords
-{
-    // variables
-    
-    private String()
-    {
-        //Stuff
-    }
-}
-
-/**
- * Constructor for objects of class CommandWords
-*/
-private class Int extends CommandWords
-{
-    // variables
-    
-    private Int()
-    {
-        //Stuff
-    }
+    // Method to List all commands
 }
