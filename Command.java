@@ -44,4 +44,9 @@ public abstract class Command //Why use abstract: http://stackoverflow.com/quest
     {
         return (secondWord != null);
     }
+    
+    /**
+     * Return true if there is an exit
+     */
+    public abstract boolean execute(Player player);
 }

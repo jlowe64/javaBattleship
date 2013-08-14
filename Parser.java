@@ -7,12 +7,13 @@ import java.util.Scanner;
  * Write a description of class Parser here.
  * 
  * @author Jerrett Fowler
- * @version 1.0 ()
+ * @version 1.0 (August 2013)
  */
 public class Parser
 {
     // instance variables - replace the example below with your own
     private CommandWords commands;
+    private Scanner scanner;
 
     /**
      * Constructor for objects of class Parser
@@ -20,6 +21,7 @@ public class Parser
     public Parser()
     {
         commands = new CommandWords();
+        scanner = new Scanner(System.in);
     }
 
     /**
@@ -28,8 +30,52 @@ public class Parser
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void sampleMethod()
+    public Command getCommand()
     {
-        // put your code here
+        String input = "";
+        String w1;
+        String w2;
+        
+        System.out.print(":: "); //prompt
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try
+        {
+            input = reader.readLine();
+        }
+        catch(java.io.IOException exc)
+        {
+            System.out.println("Error reading: " + exc.getMessage());
+        }
+        
+        StringTokenizer tokenizer = new StringTokenizer(input);
+        
+        if(tokenizer.hasMoreTokens())
+        {
+            w1 = tokenizer.nextToken(); //Word 1
+        }
+        else
+        {
+            w1 = null;
+        }
+        
+        if(tokenizer.hasMoreTokens())
+        {
+            w2 = tokenizer.nextToken(); //Word 2
+        }
+        else
+        {
+            w2 = null;
+        }
+        
+        //ignore everything else
+        
+        Command command = commands.getCommand(w1);
+        if(command != null)
+        {
+            command.setSecondWord(w2);
+        }
+        
+        return command;
     }
 }

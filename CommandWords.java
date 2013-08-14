@@ -6,18 +6,18 @@ import java.util.HashMap;
  * @author Jerrett Fowler   
  * @version 1.0 (August 2013)
  */
-public class CommandWords
+public class CommandWords 
 {
     // variables
-    private HashMap<String,Command> commands;
+    
+    // Use final to protect against nulls and for general stability
+    private final HashMap<String,Command> commands = new HashMap<String,Command>();
     
     /**
      * Constructor for objects of class CommandWords
      */
     public CommandWords()
     {
-        commands = new HashMap<String,Command>();
-  
         // Add commands
         commands.put("START", new StartCommand());
         commands.put("SUPPORTS", new SupportsCommand());

@@ -22,7 +22,7 @@ public class Game extends JApplet
     {
         parser = new Parser();
         //create player
-        newPlayer();
+        setPlayer();
         
         //set up fleet
         newFleet();
@@ -31,10 +31,20 @@ public class Game extends JApplet
     /**
      * A new player has emerged
      */
-    public void newPlayer()
+    public void setPlayer()
     {
         Player player = new Player("Player");
+        currentPlayer = player;
     }
+    
+    /**
+     * Return the player
+     */
+    public Player getPlayer()
+    {
+        return currentPlayer;
+    }
+    
     
     /**
      * Engage your Fleet
@@ -60,6 +70,25 @@ public class Game extends JApplet
     public void play()
     {
         printOpening();
+        
+        boolean end = false;
+        
+        //Main gameplay loop
+        while(!end)
+        {
+            Command command = parser.getCommand();
+            if(command == null)
+            {
+                System.out.print("Please enter your orders again, ");
+                System.out.print("and remember that orders are in ALL CAPS...");
+            }
+            else
+            {
+                end = command.execute(getPlayer());
+            }
+        }
+        
+        printClosing();
     }
     
     /**
@@ -68,8 +97,20 @@ public class Game extends JApplet
     private void printOpening()
     {
         System.out.println();
-        System.out.println("Welcome to Battleships");
+        System.out.println("Welcome to Battleships!");
         System.out.println("Type 'help' if you need help.");
+        System.out.println("All commands are in ALL CAPS.");
+        System.out.println();
+    }
+    
+    /**
+     * Closing statement
+     */
+    private void printClosing()
+    {
+        System.out.println();
+        System.out.println("Sorry to see you go soldier.");
+        System.out.println("Game has ended.");
         System.out.println();
     }
     

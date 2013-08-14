@@ -19,13 +19,15 @@ public class TalkCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * ''TALK_'' <STRING> \n
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void execute()
+    @Override
+    public boolean execute(Player p)
     {
         System.out.println("Talk");
+        return false;
     }
 }

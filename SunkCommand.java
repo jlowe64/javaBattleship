@@ -19,13 +19,15 @@ public class SunkCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * ''SUNK_'' <SHIP> \n
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void execute()
+    @Override
+    public boolean execute(Player p)
     {
         System.out.println("Sunk");
+        return false;
     }
 }

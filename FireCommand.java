@@ -19,13 +19,15 @@ public class FireCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * ''FIRE_'' <INT> _ <INT> \n (note: give column then row and start counting at 0)
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void execute()
+    @Override
+    public boolean execute(Player p)
     {
         System.out.println("Fire");
+        return false;
     }
 }

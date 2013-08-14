@@ -2,21 +2,20 @@
 /**
  * Write a description of class Grid here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class Grid
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variables
+    
 
     /**
      * Constructor for objects of class Grid
      */
     public Grid()
     {
-        // initialise instance variables
-        x = 0;
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ public class Grid
      */
     public int sampleMethod(int y)
     {
-        // put your code here
-        return x + y;
+        //
+        return 1;
     }
 }
