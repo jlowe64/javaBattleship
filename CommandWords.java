@@ -39,7 +39,9 @@ public class CommandWords
     
     // Method to check if command is valid
     
-    // Method to return command
+    /**
+     * Method to return command
+     */
     public Command getCommand(String s)
     {
         return commands.get(s);

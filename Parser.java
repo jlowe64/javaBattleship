@@ -35,8 +35,10 @@ public class Parser
         String input = "";
         String w1;
         String w2;
+        String w3;
         
-        System.out.print(":: "); //prompt
+        //prompt
+        System.out.print(":: "); 
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try
@@ -68,12 +70,22 @@ public class Parser
             w2 = null;
         }
         
-        //ignore everything else
+        if(tokenizer.hasMoreTokens())
+        {
+            w3 = tokenizer.nextToken(); //Word 3
+        }
+        else
+        {
+            w3 = null;
+        }
+        
+        //ignore everything else / add more if more commands are needed at once
         
         Command command = commands.getCommand(w1);
         if(command != null)
         {
             command.setSecondWord(w2);
+            command.setThirdWord(w3);
         }
         
         return command;

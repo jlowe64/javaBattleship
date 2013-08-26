@@ -31,14 +31,35 @@ public class Ship
         return size;
     }
     
+    /**
+     * Returns number of hit points
+     */
     public int numberOfHitpoints()
     {
         return hitPoints;
     }
     
-    //Method to remove hitpoints from a ship
+    /**
+     * Remove hitpoints from ship
+     */
     public void hit()
     {
-        hitPoints -= 1;
+        if(isDestroyed() == true)
+        {
+            System.out.println("Ship is destroyed, you cannot hit again.");
+            //Remove from fleet
+        }
+        else
+        {
+            hitPoints -= 1;
+        }
+    }
+    
+    /**
+     * Constructor for objects of class Ship
+     */
+    public boolean isDestroyed()
+    {
+        return hitPoints == 0;
     }
 }

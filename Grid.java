@@ -8,25 +8,41 @@
 public class Grid
 {
     // instance variables
-    
+    private Integer[][] grid1;
+    private Integer[][] grid2;
+    int x;
+    int y;
+    int size;
 
     /**
      * Constructor for objects of class Grid
      */
     public Grid()
     {
-        //
+        size = 10;
+        grid1 = new Integer[size][size];
+        grid2 = new Integer[size][size];
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Add Ship from fleet
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public void addShipFromFleet(Ship s)
     {
         //
-        return 1;
+    }
+    
+    /**
+     * Print grid
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+    public void printGrid()
+    {
+        //
     }
 }

@@ -2,8 +2,8 @@
 /**
  * Write a description of class MissCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class MissCommand extends Command
 {
@@ -25,7 +25,7 @@ public class MissCommand extends Command
      * @return     the sum of x and y 
      */
     @Override
-    public boolean execute(Player p)
+    public boolean execute(Object o)
     {
         System.out.println("Miss");
         return false;

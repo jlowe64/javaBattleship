@@ -25,7 +25,7 @@ public class StartCommand extends Command
      * @return     boolean
      */
     @Override
-    public boolean execute(Player p)
+    public boolean execute(Object o)
     {
         System.out.println("Start");
         return false;

@@ -2,13 +2,12 @@
 /**
  * Write a description of class FireCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class FireCommand extends Command
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variables
 
     /**
      * Constructor for objects of class FireCommand
@@ -25,9 +24,18 @@ public class FireCommand extends Command
      * @return     the sum of x and y 
      */
     @Override
-    public boolean execute(Player p)
+    public boolean execute(Object o)
     {
-        System.out.println("Fire");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("You need to input column then row. Also, start counting from 0, not 1.");
+            return false;
+        }
+        else
+        {
+            //Check for the secondword and thirdword being ints and convert to ints appropriately
+            System.out.println("Fire");
+            return true;
+        }
     }
 }

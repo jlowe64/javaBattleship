@@ -24,7 +24,7 @@ public class YesCommand extends Command
      * @return     boolean
      */
     @Override
-    public boolean execute(Player p)
+    public boolean execute(Object o)
     {
         System.out.println("Yes");
         return false;

@@ -2,8 +2,8 @@
 /**
  * Write a description of class EndCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler 
+ * @version 1.0 (August 2013)
  */
 public class EndCommand extends Command
 {
@@ -24,7 +24,7 @@ public class EndCommand extends Command
      * @return     the sum of x and y 
      */
     @Override
-    public boolean execute(Player p)
+    public boolean execute(Object o)
     {
         if(getSecondWord() == null)
         {
@@ -32,7 +32,7 @@ public class EndCommand extends Command
         }
         else 
         {
-            System.out.println("Quit what?");
+            System.out.println("In order to quit, just type END.");
             return false;
         }
     }

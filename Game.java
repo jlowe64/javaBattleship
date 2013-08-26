@@ -79,8 +79,8 @@ public class Game extends JApplet
             Command command = parser.getCommand();
             if(command == null)
             {
-                System.out.print("Please enter your orders again, ");
-                System.out.print("and remember that orders are in ALL CAPS...");
+                System.out.println("Please enter your orders again, ");
+                System.out.println("and remember that orders are in ALL CAPS...");
             }
             else
             {
@@ -120,5 +120,37 @@ public class Game extends JApplet
     public void init()
     {
         setSize(256, 256);
+    }
+    
+    /**
+     * Main menu
+     */
+    public void mainMenu()
+    {
+        //scan commands
+        Command command = parser.getCommand();
+        
+        //print menu
+        System.out.println();
+        System.out.println("Main Menu: ");
+        System.out.println("\n1. Join Game");
+        System.out.println("\n2. Host Game");
+        System.out.println();
+        
+        int choice = 0; //Link this to the command system
+        //switch
+        switch (choice)
+        {
+            //host game
+            case 1:
+            
+            //join game
+            case 2:
+            
+            //default case
+            default:
+            
+            mainMenu();
+        }
     }
 }

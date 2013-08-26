@@ -2,8 +2,8 @@
 /**
  * Write a description of class ReadyCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class ReadyCommand extends Command
 {
@@ -25,7 +25,7 @@ public class ReadyCommand extends Command
      * @return     the sum of x and y 
      */
     @Override
-    public boolean execute(Player p)
+    public boolean execute(Object o)
     {
         System.out.println("Ready");
         return false;
