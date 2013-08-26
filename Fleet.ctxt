@@ -7,4 +7,5 @@ comment1.target=int\ size()
 comment1.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\ \n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \n
 comment2.params=s
 comment2.target=void\ sink(Ship)
+comment2.text=\n\ Remove\ ships\ from\ fleet\n\ \n\ @param\ \ s\ \ \ A\ ship\n\ @return\ \ \ \ \ void\n
 numComments=3

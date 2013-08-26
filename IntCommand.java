@@ -2,8 +2,8 @@
 /**
  * Write a description of class IntCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class IntCommand extends Command
 {
@@ -19,13 +19,15 @@ public class IntCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * an integer
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void execute()
+    @Override
+    public boolean execute(Object o)
     {
         System.out.println("Int");
+        return false;
     }
 }

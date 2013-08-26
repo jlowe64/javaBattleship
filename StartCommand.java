@@ -1,14 +1,14 @@
 
 /**
- * Write a description of class StartCommand here.
+ * StartCommand starts a game. Specification below.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class StartCommand extends Command
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variables
+    
 
     /**
      * Constructor for objects of class StartCommand
@@ -19,13 +19,15 @@ public class StartCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * ''START'' \n
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param  p   a sample parameter for a method
+     * @return     boolean
      */
-    public void execute()
+    @Override
+    public boolean execute(Object o)
     {
         System.out.println("Start");
+        return false;
     }
 }

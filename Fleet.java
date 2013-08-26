@@ -48,7 +48,12 @@ public class Fleet
         return sizeOfFleet;
     }
     
-    //Method to remove ships from fleet
+    /**
+     * Remove ships from fleet
+     * 
+     * @param  s   A ship
+     * @return     void
+     */
     public void sink(Ship s)
     {
         if(s.numberOfHitpoints() == 0)
@@ -56,4 +61,16 @@ public class Fleet
             sizeOfFleet -= 1;
         }
     }
+    
+    /**
+     * Return a ships location
+     * 
+     * @param  position   where is the ship?
+     * @return     Return ship 
+     
+    public Ship location(int position)
+    {
+        //
+        return ;
+    }*/
 }

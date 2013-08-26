@@ -2,8 +2,8 @@
 /**
  * Write a description of class ReadyCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class ReadyCommand extends Command
 {
@@ -19,13 +19,15 @@ public class ReadyCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * ''READY'' \n
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void execute()
+    @Override
+    public boolean execute(Object o)
     {
         System.out.println("Ready");
+        return false;
     }
 }

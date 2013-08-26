@@ -9,6 +9,7 @@
 public abstract class Command //Why use abstract: http://stackoverflow.com/questions/7262892/java-best-practices-put-get-subclass-objects-into-hashmap-that-expects-supercla
 {
     private String secondWord;
+    private String thirdWord;
 
     /**
      * Constructor for objects of class Command
@@ -16,13 +17,14 @@ public abstract class Command //Why use abstract: http://stackoverflow.com/quest
     public Command()
     {
         secondWord = null;
+        thirdWord = null;
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Set secondWord
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @param  secondWord   a sample parameter for a method
+     * @return     void    no return 
      */
     public void setSecondWord(String secondWord)
     {
@@ -44,4 +46,37 @@ public abstract class Command //Why use abstract: http://stackoverflow.com/quest
     {
         return (secondWord != null);
     }
+    
+    /**
+     * Set thirdWord
+     * 
+     * @param  thirdWord   a sample parameter for a method
+     * @return     void    no return 
+     */
+    public void setThirdWord(String thirdWord)
+    {
+        this.thirdWord = thirdWord;
+    }
+    
+    /**
+     * Return third word
+     */
+    public String getThirdWord()
+    {
+        return thirdWord;
+    }
+ 
+    /**
+     * Return true if the command has a third word
+     */
+    public boolean hasThirdWord()
+    {
+        return (thirdWord != null);
+    }
+    
+    //This needs help
+    /**
+     * Return true if there is an exit
+     */
+    public abstract boolean execute(Object o);
 }

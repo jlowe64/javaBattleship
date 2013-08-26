@@ -2,8 +2,8 @@
 /**
  * Write a description of class EndCommand here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler 
+ * @version 1.0 (August 2013)
  */
 public class EndCommand extends Command
 {
@@ -18,13 +18,22 @@ public class EndCommand extends Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * ''END'' \n
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void execute()
+    @Override
+    public boolean execute(Object o)
     {
-        System.out.println("End");
+        if(getSecondWord() == null)
+        {
+            return true;
+        }
+        else 
+        {
+            System.out.println("In order to quit, just type END.");
+            return false;
+        }
     }
 }

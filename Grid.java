@@ -2,32 +2,47 @@
 /**
  * Write a description of class Grid here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class Grid
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // instance variables
+    private Integer[][] grid1;
+    private Integer[][] grid2;
+    int x;
+    int y;
+    int size;
 
     /**
      * Constructor for objects of class Grid
      */
     public Grid()
     {
-        // initialise instance variables
-        x = 0;
+        size = 10;
+        grid1 = new Integer[size][size];
+        grid2 = new Integer[size][size];
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Add Ship from fleet
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public void addShipFromFleet(Ship s)
     {
-        // put your code here
-        return x + y;
+        //
+    }
+    
+    /**
+     * Print grid
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+    public void printGrid()
+    {
+        //
     }
 }
