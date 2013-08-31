@@ -137,11 +137,23 @@ dependency8.type=UsesDependency
 dependency9.from=CommandWords
 dependency9.to=EndCommand
 dependency9.type=UsesDependency
+<<<<<<< HEAD
+package.editor.height=579
+package.editor.width=931
+package.editor.x=1371
+package.editor.y=184
+package.numDependencies=26
+=======
 package.editor.height=664
 package.editor.width=1029
 package.editor.x=237
 package.editor.y=22
+<<<<<<< HEAD
 package.numDependencies=46
+=======
+package.numDependencies=45
+>>>>>>> 5e39497498279bb1759b4986eec2f6c7789df6da
+>>>>>>> e65d83f8ba959ab54166f9f60ccf9af688e8cc9b
 package.numTargets=28
 package.showExtends=true
 package.showUses=true
