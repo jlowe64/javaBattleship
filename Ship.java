@@ -10,14 +10,20 @@ public class Ship
     // instance variables
     private int hitPoints;
     private int size;
+    private int orientation;
+    private int row;
+    private int column;
 
     /**
      * Constructor for objects of class Ship
      */
-    public Ship(int size)
+    public Ship(int size, int direction, int row, int column)
     {
-        this.size = hitPoints;
+        this.hitPoints = size;
         this.size = size;
+        this.orientation = direction;
+        this.row = row;
+        this.column = column;
     }
     
     /**
@@ -61,5 +67,29 @@ public class Ship
     public boolean isDestroyed()
     {
         return hitPoints == 0;
+    }
+    
+    /**
+     * Orientation
+     */
+    public int getOrientation()
+    {
+        return orientation;
+    }
+    
+    /**
+     * Row
+     */
+    public int getRow()
+    {
+        return row;
+    }
+    
+    /**
+     * Column
+     */
+    public int getColumn()
+    {
+        return column;
     }
 }

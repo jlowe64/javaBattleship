@@ -1,33 +1,52 @@
+import java.net.*;
+import java.io.*;
 
 /**
- * Write a description of class Hosts here.
+ * Server class, aka Hosts.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerrett Fowler
+ * @version 1.0 (August 2013)
  */
 public class Hosts
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Hosts
-     */
-    public Hosts()
+    public static void main(String[] args) throws IOException 
     {
-        // initialise instance variables
-        x = 0;
-    }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        ServerSocket serverSocket = null;
+        try {
+            serverSocket = new ServerSocket(4444);
+        } catch (IOException e) {
+            System.err.println("Could not listen on port: 4444.");
+            System.exit(1);
+        }
+
+        Socket clientSocket = null;
+        try {
+            clientSocket = serverSocket.accept();
+        } catch (IOException e) {
+            System.err.println("Accept failed.");
+            System.exit(1);
+        }
+
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedReader in = new BufferedReader(
+				new InputStreamReader(
+				clientSocket.getInputStream()));
+        String inputLine, outputLine;
+        Protocol kkp = new Protocol();
+
+        outputLine = kkp.processInput(null);
+        out.println(outputLine);
+
+        while ((inputLine = in.readLine()) != null) {
+             outputLine = kkp.processInput(inputLine);
+             out.println(outputLine);
+             if (outputLine.equals("Bye."))
+                break;
+        }
+        out.close();
+        in.close();
+        clientSocket.close();
+        serverSocket.close();
     }
 }

@@ -22,16 +22,16 @@ public class Fleet
     public Fleet()
     {
         //3 Subs
-        sub1 = new Ship(2);
-        sub2 = new Ship(2);
-        sub3 = new Ship(2);
+        sub1 = new Ship(2, 0 , 0, 0);
+        sub2 = new Ship(2, 0 , 0, 0);
+        sub3 = new Ship(2, 0 , 0, 0);
         
         //1 Battleship
-        battleship1 = new Ship(4);
+        battleship1 = new Ship(4, 0 , 0, 0);
         
         //2 Destroyers
-        destroyer1 = new Ship(3);
-        destroyer1 = new Ship(3);
+        destroyer1 = new Ship(3, 0 , 0, 0);
+        destroyer1 = new Ship(3, 0 , 0, 0);
         
         //Size of fleet
         sizeOfFleet = 6;
