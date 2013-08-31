@@ -1,6 +1,5 @@
 import java.awt.event.*; // Use some events
 import java.awt.*; // Graphics
-import java.applet.*; // Applets
 import javax.swing.*; // Use swing for GUI
 import java.util.*; // Util
 
@@ -10,15 +9,24 @@ import java.util.*; // Util
  * @author Jerrett Fowler 
  * @version 1.0 (July 2013)
  */
-public class Game extends JApplet
+public class Battleship extends JFrame implements MouseListener, WindowListener
 {
     private Parser parser;
     Player currentPlayer;
     
     /**
+     * Main
+     */
+    public static void main(String[] args) 
+    {
+
+        new Battleship();
+    }
+    
+    /**
      * Create the game and initialise the grids
      */
-    public Game()
+    public Battleship()
     {
         parser = new Parser();
         //create player
@@ -27,7 +35,7 @@ public class Game extends JApplet
         //set up fleet
         newFleet();
     }
-    
+
     /**
      * A new player has emerged
      */
@@ -123,34 +131,22 @@ public class Game extends JApplet
     }
     
     /**
-     * Main menu
+     * Mouse Event Overrides
      */
-    public void mainMenu()
-    {
-        //scan commands
-        Command command = parser.getCommand();
-        
-        //print menu
-        System.out.println();
-        System.out.println("Main Menu: ");
-        System.out.println("\n1. Join Game");
-        System.out.println("\n2. Host Game");
-        System.out.println();
-        
-        int choice = 0; //Link this to the command system
-        //switch
-        switch (choice)
-        {
-            //host game
-            case 1:
-            
-            //join game
-            case 2:
-            
-            //default case
-            default:
-            
-            mainMenu();
-        }
-    }
+    public void mouseClicked(MouseEvent event) {}
+    public void mouseEntered(MouseEvent event) {}
+    public void mouseExited(MouseEvent event) {}
+    public void mousePressed(MouseEvent event) {}
+    public void mouseReleased(MouseEvent event) {}
+    
+    /**
+     * GFX Event Overrides
+     */
+    public void windowActivated(WindowEvent event) {}
+    public void windowClosed(WindowEvent event) {}
+    public void windowClosing(WindowEvent event) {}
+    public void windowDeactivated(WindowEvent event) {}
+    public void windowDeiconified(WindowEvent event) {}
+    public void windowIconified(WindowEvent event) {}
+    public void windowOpened(WindowEvent event) {}
 }
