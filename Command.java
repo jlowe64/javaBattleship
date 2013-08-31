@@ -8,12 +8,9 @@
  */
 public abstract class Command //Why use abstract: http://stackoverflow.com/questions/7262892/java-best-practices-put-get-subclass-objects-into-hashmap-that-expects-supercla
 {
-    private String secondWord;
-    private String thirdWord;
-
-    /**
-     * Constructor for objects of class Command
-     */
+    public String secondWord;
+    public String thirdWord;
+    
     public Command()
     {
         secondWord = null;
