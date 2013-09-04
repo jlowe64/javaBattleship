@@ -13,7 +13,11 @@ public class Parser
 {
     // instance variables - replace the example below with your own
     private CommandWords commands;
-    private Scanner scanner;
+    private String input;
+    private String w1;
+    private String theRest;
+    //private String w2;
+    //private String w3;
 
     /**
      * Constructor for objects of class Parser
@@ -21,21 +25,16 @@ public class Parser
     public Parser()
     {
         commands = new CommandWords();
-        scanner = new Scanner(System.in);
     }
 
     /**
      * Get commands
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * @return     the command 
      */
     public Command getCommand()
     {
-        String input = "";
-        String w1;
-        String w2;
-        String w3;
+        input = "";
         
         //prompt
         System.out.print(":: "); 
@@ -61,6 +60,17 @@ public class Parser
             w1 = null;
         }
         
+        //do a check for the string command
+            
+        //do a check for the int command
+        
+        //store the rest as a string if there are more
+        while(tokenizer.hasMoreTokens())
+        {
+            theRest += " " + tokenizer.nextToken();
+        }
+        
+        /*
         if(tokenizer.hasMoreTokens())
         {
             w2 = tokenizer.nextToken(); //Word 2
@@ -78,16 +88,47 @@ public class Parser
         {
             w3 = null;
         }
-        
-        //ignore everything else / add more if more commands are needed at once
-        
+        */
+
         Command command = commands.getCommand(w1);
         if(command != null)
         {
-            command.setSecondWord(w2);
-            command.setThirdWord(w3);
+            command.setSecondWord(theRest);
+            //command.setThirdWord(w3);
         }
         
         return command;
+    }
+    
+    /**
+     * Get word 1 as string
+     */
+    public String getW1()
+    {
+        return w1;
+    }
+    
+    /**
+     * Get word 2 as string
+     */
+    public String getW2()
+    {
+        return theRest;
+    }
+    
+    /**
+     * Get word 3 as string
+     
+    public String getW3()
+    {
+        return w3;
+    }*/
+    
+    /**
+     * Get CommandWords
+     */
+    public CommandWords getCommandWords()
+    {
+        return commands;
     }
 }

@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class SupportsCommand extends Command
 {
     // instance variables
-    ArrayList<String> supports = new ArrayList();
+    ArrayList<String> supports = new ArrayList<String>();
+    private String name = "SUPPORTS";
     
     /**
      * Constructor for objects of class SupportsCommand
@@ -51,5 +52,14 @@ public class SupportsCommand extends Command
             }
         }
         return b;
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

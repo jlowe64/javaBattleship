@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=HelpCommand()
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ HelpCommand\n
+comment1.params=o
+comment1.target=boolean\ execute(java.lang.Object)
+comment1.text=\n\ ''HELP''\ \\n\n\ \n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \n
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment2.text=\n\ Return\ String\ of\ name\ of\ command\n
+numComments=3

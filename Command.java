@@ -71,9 +71,13 @@ public abstract class Command //Why use abstract: http://stackoverflow.com/quest
         return (thirdWord != null);
     }
     
-    //This needs help
     /**
-     * Return true if there is an exit
+     * Return true if conditions are met
      */
     public abstract boolean execute(Object o);
+   
+    /**
+     * Return String of name of command
+     */
+    public abstract String getName();
 }

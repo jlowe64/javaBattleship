@@ -7,8 +7,9 @@
  */
 public class FireCommand extends Command
 {
-    int column, row;
-
+    private int column, row;
+    private String name = "FIRE";
+    
     /**
      * Constructor for objects of class FireCommand
      */
@@ -37,5 +38,14 @@ public class FireCommand extends Command
             System.out.println("Fire");
             return true;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

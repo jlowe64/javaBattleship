@@ -8,7 +8,7 @@
 public class SunkCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String name = "SUNK";
 
     /**
      * Constructor for objects of class SunkCommand
@@ -37,5 +37,14 @@ public class SunkCommand extends Command
             System.out.println("You must enter a ship.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

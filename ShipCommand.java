@@ -8,7 +8,7 @@
 public class ShipCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String name = "SHIP";
 
     /**
      * Constructor for objects of class ShipCommand
@@ -29,5 +29,14 @@ public class ShipCommand extends Command
     {
         System.out.println("Ship");
         return false;
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

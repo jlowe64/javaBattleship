@@ -8,7 +8,8 @@
 public class YesCommand extends Command
 {
     // instance variables
-
+    private String name = "YES";
+    
     /**
      * Constructor for objects of class YesCommand
      */
@@ -36,5 +37,14 @@ public class YesCommand extends Command
             System.out.println("YES not used correctly.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

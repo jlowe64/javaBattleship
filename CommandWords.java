@@ -35,6 +35,7 @@ public class CommandWords
         commands.put("SHIP", new ShipCommand());
         commands.put("STRING", new StringCommand());
         commands.put("INT", new IntCommand());
+        commands.put("HELP", new HelpCommand());
     }
     
     // Method to check if command is valid
@@ -53,11 +54,11 @@ public class CommandWords
      */
     public void printCommands()
     {
-        Iterator iterator = commands.entrySet().iterator();
+        Iterator<Map.Entry<String, Command>> iterator = commands.entrySet().iterator();
  
         while(iterator.hasNext())
         {
-            Map.Entry pairs = (Map.Entry)iterator.next();
+            Map.Entry<String, Command> pairs = iterator.next();
             System.out.println(pairs.getKey());
         }
     }

@@ -8,7 +8,7 @@
 public class IntCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String name = "INT";
 
     /**
      * Constructor for objects of class IntCommand
@@ -29,5 +29,14 @@ public class IntCommand extends Command
     {
         System.out.println("Int");
         return false;
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

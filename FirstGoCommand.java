@@ -8,8 +8,9 @@ import java.util.Random;
 public class FirstGoCommand extends Command
 {
     // instance variables - replace the example below with your own
-    Random random;
-    int i;
+    private Random random;
+    private int i;
+    private String name = "FIRSTGO";
 
     /**
      * Constructor for objects of class FirstGoCommand
@@ -38,5 +39,14 @@ public class FirstGoCommand extends Command
         {
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

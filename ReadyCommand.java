@@ -8,7 +8,7 @@
 public class ReadyCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String name = "READY";
 
     /**
      * Constructor for objects of class ReadyCommand
@@ -27,9 +27,13 @@ public class ReadyCommand extends Command
     @Override
     public boolean execute(Object o)
     {
+        Player p = null;
+        p = (Player)o;
+        
         if(getSecondWord() == null)
         {
             System.out.println("Ready");
+            p.setReady(true);
             return true;
         }
         else 
@@ -37,5 +41,14 @@ public class ReadyCommand extends Command
             System.out.println("READY not used correctly.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

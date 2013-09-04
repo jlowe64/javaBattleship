@@ -8,6 +8,7 @@
 public class NoCommand extends Command
 {
     // instance variables
+    private String name = "NO";
 
     /**
      * Constructor for objects of class NoCommand
@@ -36,5 +37,14 @@ public class NoCommand extends Command
             System.out.println("NO not used correctly.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }
