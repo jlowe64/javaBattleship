@@ -25,7 +25,7 @@ public class Parser
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Get commands
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 

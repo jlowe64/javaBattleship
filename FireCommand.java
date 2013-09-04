@@ -7,7 +7,7 @@
  */
 public class FireCommand extends Command
 {
-    // instance variables
+    int column, row;
 
     /**
      * Constructor for objects of class FireCommand

@@ -27,7 +27,15 @@ public class HitCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Hit");
-        return false;
+        if(getSecondWord() != null)
+        {
+            System.out.println("Hit");
+            return true;
+        }
+        else 
+        {
+            System.out.println("You must enter a Ship.");
+            return false;
+        }
     }
 }

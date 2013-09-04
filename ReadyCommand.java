@@ -27,7 +27,15 @@ public class ReadyCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Ready");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("Ready");
+            return true;
+        }
+        else 
+        {
+            System.out.println("READY not used correctly.");
+            return false;
+        }
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Write a description of class SupportsCommand here.
@@ -8,13 +9,14 @@
 public class SupportsCommand extends Command
 {
     // instance variables
-
+    ArrayList<String> supports = new ArrayList();
+    
     /**
      * Constructor for objects of class SupportsCommand
      */
     public SupportsCommand()
     {
-        //
+        supports.add("DEFAULT");
     }
 
     /**
@@ -28,5 +30,26 @@ public class SupportsCommand extends Command
     {
         System.out.println("Supports");
         return false;
+    }
+    
+    /*
+     * Yes/No feature set
+     */
+    public boolean getSupports(String feature)
+    {
+        boolean b = false;
+       
+        for(String s : supports)
+        {
+            if(s.equals(feature))
+            {
+                b = true;
+            }
+            else
+            {
+                b = false;
+            }
+        }
+        return b;
     }
 }

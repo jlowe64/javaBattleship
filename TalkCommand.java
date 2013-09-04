@@ -27,7 +27,16 @@ public class TalkCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Talk");
-        return false;
+        if(getSecondWord() != null)
+        {
+            System.out.println("Talk");
+            //handle using the string command
+            return true;
+        }
+        else 
+        {
+            System.out.println("Talk not used correctly. You must send a message after the command.");
+            return false;
+        }
     }
 }

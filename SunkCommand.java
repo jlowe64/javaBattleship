@@ -27,7 +27,15 @@ public class SunkCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Sunk");
-        return false;
+        if(getSecondWord() != null)
+        {
+            System.out.println("Sunk");
+            return true;
+        }
+        else 
+        {
+            System.out.println("You must enter a ship.");
+            return false;
+        }
     }
 }

@@ -9,6 +9,8 @@ public class Player
 {
     // instance variables
     private String playerName;
+    private boolean currentTurn = false;
+    private boolean winnerOrLoser = false;
 
     /**
      * Constructor for objects of class Player
@@ -27,5 +29,37 @@ public class Player
     public String getName()
     {
         return playerName;
+    }
+    
+    /*
+     * Get Turn
+     */
+    public boolean getTurn(Player p)
+    {
+        return currentTurn;
+    }
+    
+    /*
+     * Set Turn
+     */
+    public void setTurn(boolean b)
+    {
+        currentTurn = b;
+    }
+    
+    /*
+     * Get Winner
+     */
+    public boolean getIWin(Player p)
+    {
+        return winnerOrLoser;
+    }
+    
+    /*
+     * Set Winner
+     */
+    public void setIWin(boolean b)
+    {
+        winnerOrLoser = b;
     }
 }

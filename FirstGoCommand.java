@@ -1,4 +1,4 @@
-
+import java.util.Random;
 /**
  * Write a description of class FirstGoCommand here.
  * 
@@ -8,7 +8,8 @@
 public class FirstGoCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    Random random;
+    int i;
 
     /**
      * Constructor for objects of class FirstGoCommand
@@ -28,6 +29,14 @@ public class FirstGoCommand extends Command
     public boolean execute(Object o)
     {
         System.out.println("FirstGo");
-        return false;
+        i = random.nextInt(2);
+        if (getSecondWord() == null && i == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -27,7 +27,15 @@ public class StartCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Start");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("Start");
+            return true;
+        }
+        else 
+        {
+            System.out.println("START not used correctly.");
+            return false;
+        }
     }
 }

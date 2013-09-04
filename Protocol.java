@@ -1,70 +1,70 @@
-import java.net.*;
-import java.io.*;
+import java.util.StringTokenizer;
 
 /**
  * Protocol handles all the handshaking between Hosts and Client
  * 
  * @author Jerrett Fowler 
- * @version 1.0 (August 2013)
+ * @version 1.0 (September 2013)
  */
 public class Protocol
 {
-    private static final int WAITING = 0;
-    private static final int SENTKNOCKKNOCK = 1;
-    private static final int SENTCLUE = 2;
-    private static final int ANOTHER = 3;
+    private CommandWords commands;
 
-    private static final int NUMJOKES = 5;
-
-    private int state = WAITING;
-    private int currentJoke = 0;
-
-    private String[] clues = { "Turnip", "Little Old Lady", "Atch", "Who", "Who" };
-    private String[] answers = { "Turnip the heat, it's cold in here!",
-                                 "I didn't know you could yodel!",
-                                 "Bless you!",
-                                 "Is there an owl in here?",
-                                 "Is there an echo in here?" };
-
-    public String processInput(String theInput) 
+    /**
+     * Constructor for objects of class Protocol
+     */
+    public Protocol()
     {
-        String theOutput = null;
-
-        if (state == WAITING) {
-            theOutput = "Knock! Knock!";
-            state = SENTKNOCKKNOCK;
-        } else if (state == SENTKNOCKKNOCK) {
-            if (theInput.equalsIgnoreCase("Who's there?")) {
-                theOutput = clues[currentJoke];
-                state = SENTCLUE;
-            } else {
-                theOutput = "You're supposed to say \"Who's there?\"! " +
-			    "Try again. Knock! Knock!";
-            }
-        } else if (state == SENTCLUE) {
-            if (theInput.equalsIgnoreCase(clues[currentJoke] + " who?")) {
-                theOutput = answers[currentJoke] + " Want another? (y/n)";
-                state = ANOTHER;
-            } else {
-                theOutput = "You're supposed to say \"" + 
-			    clues[currentJoke] + 
-			    " who?\"" + 
-			    "! Try again. Knock! Knock!";
-                state = SENTKNOCKKNOCK;
-            }
-        } else if (state == ANOTHER) {
-            if (theInput.equalsIgnoreCase("y")) {
-                theOutput = "Knock! Knock!";
-                if (currentJoke == (NUMJOKES - 1))
-                    currentJoke = 0;
-                else
-                    currentJoke++;
-                state = SENTKNOCKKNOCK;
-            } else {
-                theOutput = "Bye.";
-                state = WAITING;
-            }
+        commands = new CommandWords();
+    }
+    
+    /**
+     * Get commands for protocol
+     */
+    public Command getCommand(String input)
+    {
+        input = "";
+        
+        String w1;
+        String w2;
+        String w3;
+        
+        StringTokenizer tokenizer = new StringTokenizer(input);
+        
+        if(tokenizer.hasMoreTokens())
+        {
+            w1 = tokenizer.nextToken(); //Word 1
         }
-        return theOutput;
+        else
+        {
+            w1 = null;
+        }
+        
+        if(tokenizer.hasMoreTokens())
+        {
+            w2 = tokenizer.nextToken(); //Word 2
+        }
+        else
+        {
+            w2 = null;
+        }
+        
+        if(tokenizer.hasMoreTokens())
+        {
+            w3 = tokenizer.nextToken(); //Word 3
+        }
+        else
+        {
+            w3 = null;
+        }
+        
+        Command command = commands.getCommand(w1);
+        if(command != null)
+        {
+            command.setSecondWord(w2);
+            command.setThirdWord(w3);
+        }
+        
+        return command;
     }
 }

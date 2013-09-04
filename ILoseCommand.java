@@ -27,7 +27,15 @@ public class ILoseCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("I Lose");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("I Lose");
+            return true;
+        }
+        else 
+        {
+            System.out.println("ILOSE not used correctly.");
+            return false;
+        }
     }
 }

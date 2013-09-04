@@ -26,7 +26,15 @@ public class NoCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("No");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("No");
+            return true;
+        }
+        else 
+        {
+            System.out.println("NO not used correctly.");
+            return false;
+        }
     }
 }

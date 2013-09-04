@@ -13,17 +13,19 @@ public class Ship
     private int orientation;
     private int row;
     private int column;
+    private String shipID;
 
     /**
      * Constructor for objects of class Ship
      */
-    public Ship(int size, int direction, int row, int column)
+    public Ship(String id, int size, int direction, int row, int column)
     {
         this.hitPoints = size;
         this.size = size;
         this.orientation = direction;
         this.row = row;
         this.column = column;
+        this.shipID = id;
     }
     
     /**
@@ -35,6 +37,17 @@ public class Ship
     public int getSize()
     {
         return size;
+    }
+    
+    /**
+     * Insert a ship at a certain coordinate
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y 
+     */
+    public void placeShip(Ship s)
+    {
+        //
     }
     
     /**
@@ -91,5 +104,21 @@ public class Ship
     public int getColumn()
     {
         return column;
+    }
+    
+    /**
+     * Get ID
+     */
+    public String getShipID()
+    {
+        return shipID;
+    }
+    
+    /**
+     * Set ID
+     */
+    public void setShipID(String s)
+    {
+        this.shipID = s;
     }
 }

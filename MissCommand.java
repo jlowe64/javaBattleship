@@ -27,7 +27,15 @@ public class MissCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Miss");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("Miss");
+            return true;
+        }
+        else
+        {
+            System.out.println("MISS not used correctly.");
+            return false;
+        }
     }
 }

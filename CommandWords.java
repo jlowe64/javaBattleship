@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * CommandWords holds all subclasses for Commands
@@ -48,4 +48,17 @@ public class CommandWords
     }
     
     // Method to List all commands
+    /**
+     * Method to print all commands
+     */
+    public void printCommands()
+    {
+        Iterator iterator = commands.entrySet().iterator();
+ 
+        while(iterator.hasNext())
+        {
+            Map.Entry pairs = (Map.Entry)iterator.next();
+            System.out.println(pairs.getKey());
+        }
+    }
 }

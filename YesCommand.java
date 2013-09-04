@@ -26,7 +26,15 @@ public class YesCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Yes");
-        return false;
+        if(getSecondWord() == null)
+        {
+            System.out.println("Yes");
+            return true;
+        }
+        else 
+        {
+            System.out.println("YES not used correctly.");
+            return false;
+        }
     }
 }
