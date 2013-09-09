@@ -9,10 +9,8 @@ import java.util.*;
 public class Grid
 {
     // instance variables
-    private int grid1[][];
-    private int grid2[][];
-    int x;
-    int y;
+    private int[][] grid1;
+    private int[][] grid2;
     int size;
 
     /**
@@ -23,8 +21,6 @@ public class Grid
         size = 10;
         grid1 = new int[size][size];
         grid2 = new int[size][size];
-        fillArray(grid1);
-        fillArray(grid2);
     }
 
     /**
@@ -35,18 +31,35 @@ public class Grid
      */
     public void addShipFromFleet(Ship s)
     {
-        //
-    }
-    
-    /**
-     * 
-     */
-    public void fillArray(int a[][])
-    {
-        // Fill each row with 0
-        for (int[] row: a)
+        //get x
+        int xCoord = s.getColumn();
+        
+        //get y
+        int yCoord = s.getRow();
+        
+        //get direction
+        int direction = s.getOrientation();
+        
+        //get Size
+        int shipSize = s.getSize();
+        
+        if(direction == 0)
         {
-            Arrays.fill(a, 0);
+            for(int x = 0; x < shipSize; x++)
+            {
+                grid1[yCoord][xCoord + x] = 1; 
+            }
+        }
+        else if(direction == 1)
+        {
+            for(int y = 0; y < shipSize; y++)
+            {
+                grid1[yCoord + y][xCoord] = 1; 
+            }
+        }
+        else
+        {
+            throw new RuntimeException("Empty case.");
         }
     }
     
@@ -56,18 +69,25 @@ public class Grid
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
-    public void printGrid(int a[][])
+    public void printGrid()
     {
+        //Loop through rows
         for(int i = 0; i < size; i++)
         {
+            //Loops and prints each column
             for(int j = 0; j < size; j++)
             {
-                if(a[i][j] == 1)
-                {
-                    grid1[i][j] = x;
-                }
-                System.out.print(a[i][j]);
+                System.out.print(grid1[i][j] == 1 ? "X" : "." );
+                System.out.print(" ");
             }
+            System.out.print(" ");
+            for(int k = 0; k < size; k++)
+            {
+                System.out.print(grid2[i][k] == 1 ? "X" : "." );
+                System.out.print(" ");
+            }
+            System.out.println();
         }
+        System.out.println();
     }
 }

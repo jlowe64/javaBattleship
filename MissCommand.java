@@ -29,6 +29,10 @@ public class MissCommand extends Command
     {
         if(getSecondWord() == null)
         {
+            //convert object
+            
+            //sent MISS to other player
+            
             System.out.println("Miss");
             return true;
         }

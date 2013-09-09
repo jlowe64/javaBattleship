@@ -1,6 +1,4 @@
 import java.awt.event.*; // Use some events
-//import java.awt.*; // Graphics
-//import javax.swing.*; // Use swing for GUI
 import java.util.*; // Util
 import java.io.*; //I/O
 import java.net.*; //Sockets
@@ -11,8 +9,7 @@ import java.net.*; //Sockets
  * @author Jerrett Fowler 
  * @version 1.2 (August 2013)
  */
-
-//public class Battleship extends JFrame implements MouseListener, WindowListener    
+ 
 public class Battleship
 {
     
@@ -25,6 +22,8 @@ public class Battleship
     private Parser parser;
     private Protocol protocol;
     Player currentPlayer;
+    Grid grids;
+    Fleet fleet;
 
     /**
      * Main
@@ -32,7 +31,8 @@ public class Battleship
     public static void main(String[] args) throws IOException
     {
         int i = 0, portArg;
-        String arg, machine;
+        String arg = new String(); 
+        String machine = new String();
         boolean vflag = false;
         while (i < args.length && args[i].startsWith("-"))
         {
@@ -84,7 +84,7 @@ public class Battleship
         //set up fleet
         newFleet();
         //set up new grids
-        //createGrids();
+        createGrids();
         
         switch(gameState)
         {
@@ -205,6 +205,22 @@ public class Battleship
     {
         printOpening();
         
+        System.out.println("                 GAME BOARD");
+        
+        if(gameState == GameState.INITIALISE) //change this when READY works
+        {
+            grids.addShipFromFleet(fleet.getShipInFleet("SUBMARINE1"));
+            grids.addShipFromFleet(fleet.getShipInFleet("SUBMARINE2"));
+            grids.addShipFromFleet(fleet.getShipInFleet("SUBMARINE3"));
+            grids.addShipFromFleet(fleet.getShipInFleet("BATTLESHIP1"));
+            grids.addShipFromFleet(fleet.getShipInFleet("DESTROYER1"));
+            grids.addShipFromFleet(fleet.getShipInFleet("DESTROYER2"));
+            grids.printGrid();
+        }
+    
+        System.out.println();
+        System.out.println("Board is set up for you. Command for Placing a ship is not fully implemented.");
+        
         //Main gameplay loop
         while(!getPlayer().getEnd())
         {
@@ -242,40 +258,49 @@ public class Battleship
             else if(command.getName().equals("TALK"))
             {
                 command.execute(getPlayer()); 
+                
+                //send message to other player
             }
             
             else if(command.getName().equals("FIRE"))
             {
                 command.execute(getPlayer()); 
+                
+                //send message to other player
             }
             
             else if(command.getName().equals("MISS"))
             {
                 command.execute(getPlayer());
+            
+                //send message to other player
             }
             
             else if(command.getName().equals("HIT"))
             {
                 command.execute(getPlayer());
+       
+                //edit Grid
+                
+                //send message to other player
             }
             
             else if(command.getName().equals("SUNK"))
             {
                 command.execute(getPlayer());
+                
+                //remove ship from ArrayList
+            
+                //send message to other player
             }
             
             else if(command.getName().equals("ILOSE"))
             {
-                command.execute(getPlayer()); 
-            }
+                command.execute(getPlayer());
             
-            else if(command.getName().equals("SHIP"))
-            {
-                command.execute(getPlayer()); 
+                //send message to other player
             }
- 
-            
-            //need to add more stuff here
+
         }
         
         printClosing();
@@ -328,7 +353,7 @@ public class Battleship
      */
     public void newFleet()
     {
-        Fleet fleet = new Fleet();
+        fleet = new Fleet();
     }
 
     /**
@@ -337,34 +362,8 @@ public class Battleship
     private void createGrids()
     {
         // Create player grid
-        Grid grids = new Grid();
+        grids = new Grid();
+        
+       
     }
-    
-    /**
-     * Start of program
-     
-    public void init()
-    {
-        setSize(256, 256);
-    }*/
-    
-    /**
-     * Mouse Event Overrides
-     */
-    //public void mouseClicked(MouseEvent event) {}
-    //public void mouseEntered(MouseEvent event) {}
-    //public void mouseExited(MouseEvent event) {}
-    //public void mousePressed(MouseEvent event) {}
-    //public void mouseReleased(MouseEvent event) {}
-    
-    /**
-     * GFX Event Overrides
-     */
-    //public void windowActivated(WindowEvent event) {}
-    //public void windowClosed(WindowEvent event) {}
-    //public void windowClosing(WindowEvent event) {}
-    //public void windowDeactivated(WindowEvent event) {}
-    //public void windowDeiconified(WindowEvent event) {}
-    //public void windowIconified(WindowEvent event) {}
-    //public void windowOpened(WindowEvent event) {}
 }

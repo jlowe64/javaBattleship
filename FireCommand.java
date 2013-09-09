@@ -34,8 +34,23 @@ public class FireCommand extends Command
         }
         else
         {
-            //Check for the secondword and thirdword being ints and convert to ints appropriately
-            System.out.println("Fire");
+            Player p = null;
+            p = (Player)o;
+            
+            String[] strArray = getSecondWord().split(" ");
+            int[] intArray = new int[strArray.length];
+            
+            for(int i = 1; i < strArray.length; i++)
+            {
+                if(strArray[i] != null)
+                {
+                    intArray[i] = Integer.parseInt(strArray[i]);
+                }
+                
+            }
+            
+            System.out.println("Fired on coordinates: " + intArray[1] + " x " + intArray[2]);
+            
             return true;
         }
     }

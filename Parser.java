@@ -16,8 +16,6 @@ public class Parser
     private String input;
     private String w1;
     private String theRest;
-    //private String w2;
-    //private String w3;
 
     /**
      * Constructor for objects of class Parser
@@ -34,10 +32,10 @@ public class Parser
      */
     public Command getCommand()
     {
-        input = "";
+        input = new String("");
         
         //prompt
-        System.out.print(":: "); 
+        System.out.print(">> "); 
         
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try
@@ -60,10 +58,6 @@ public class Parser
             w1 = null;
         }
         
-        //do a check for the string command
-            
-        //do a check for the int command
-        
         //store the rest as a string if there are more
         while(tokenizer.hasMoreTokens())
         {
@@ -79,22 +73,12 @@ public class Parser
         {
             w2 = null;
         }
-        
-        if(tokenizer.hasMoreTokens())
-        {
-            w3 = tokenizer.nextToken(); //Word 3
-        }
-        else
-        {
-            w3 = null;
-        }
         */
 
         Command command = commands.getCommand(w1);
         if(command != null)
         {
             command.setSecondWord(theRest);
-            //command.setThirdWord(w3);
         }
         
         return command;
@@ -115,14 +99,6 @@ public class Parser
     {
         return theRest;
     }
-    
-    /**
-     * Get word 3 as string
-     
-    public String getW3()
-    {
-        return w3;
-    }*/
     
     /**
      * Get CommandWords

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Write a description of class Fleet here.
@@ -23,18 +24,18 @@ public class Fleet
     public Fleet()
     {
         //3 Subs
-        sub1 = new Ship("s1", 2, 0, 0, 0);
-        sub2 = new Ship("s2", 2, 0, 0, 0);
-        sub3 = new Ship("s3", 2, 0, 0, 0);
+        sub1 = new Ship("SUBMARINE1", 2, 1, 0, 0);
+        sub2 = new Ship("SUBMARINE2", 2, 0, 2, 2);
+        sub3 = new Ship("SUBMARINE3", 2, 1, 1, 6);
         
         //1 Battleship
-        battleship1 = new Ship("b1", 4, 0, 0, 0);
+        battleship1 = new Ship("BATTLESHIP1", 4, 0, 5, 2);
         
         //2 Destroyers
-        destroyer1 = new Ship("d1", 3, 0, 0, 0);
-        destroyer2 = new Ship("d2", 3, 0, 0, 0);
+        destroyer1 = new Ship("DESTROYER1", 3, 1, 7, 1);
+        destroyer2 = new Ship("DESTROYER2", 3, 1, 6,7);
         
-        fleet = new ArrayList();
+        fleet = new ArrayList<Ship>();
         
         fleet.add(sub1);
         fleet.add(sub2);
@@ -42,10 +43,11 @@ public class Fleet
         fleet.add(battleship1);
         fleet.add(destroyer1);
         fleet.add(destroyer2);
+        
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Size of fleet
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
@@ -69,35 +71,35 @@ public class Fleet
         }
     }
     
-    
     /**
      * Return an instance of a specific ship
      * 
-     * @param  s   A ship
+     * @param  shipID   A ship
      * @return     ship
      */
     public Ship getShipInFleet(String shipID)
     {
-        Ship ship = new Ship("id", 0, 0, 0, 0);
+        Ship temp = null;
         for(Ship s : fleet)
         {
             if(s.getShipID().equals(shipID))
             {
-                ship = s;
+                temp = s;
             }
         }
-        return ship;
+        return temp;
     }
     
     /**
-     * Return all ships locations/Prints
-     * 
-     * @param  position   where is the ship?
-     * @return     Return ship 
-    
-    public Ship location(int position)
+     * Lists all ships
+     */
+    public void getFleet()
     {
-        //
-        return ;
-    }*/
+        Iterator<Ship> itr = fleet.iterator();
+        
+        while(itr.hasNext())
+        {
+            System.out.println(itr.next());
+        }
+    }
 }

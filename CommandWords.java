@@ -36,6 +36,7 @@ public class CommandWords
         commands.put("STRING", new StringCommand());
         commands.put("INT", new IntCommand());
         commands.put("HELP", new HelpCommand());
+        commands.put("PLACE", new PlaceCommand());
     }
     
     // Method to check if command is valid

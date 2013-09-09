@@ -29,7 +29,12 @@ public class SunkCommand extends Command
     {
         if(getSecondWord() != null)
         {
-            System.out.println("Sunk");
+            Ship s = null;
+            s = (Ship)o;
+            
+            //if ship's
+            
+            System.out.println("You sunk my ship.");
             return true;
         }
         else 

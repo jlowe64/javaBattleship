@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 /**
  * Write a description of class TalkCommand here.
@@ -29,26 +30,16 @@ public class TalkCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        if(getSecondWord() == null)
+        if(getSecondWord() != null)
         {
             Player p = null;
             p = (Player)o;
-            String input = "";
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String input = new String(getSecondWord());
+            String[] inputArray = input.split(" ", 2);
             
-            try
-            {
-                input = reader.readLine();
-            }
-            catch(java.io.IOException exc)
-            {
-                System.out.println("Error reading: " + exc.getMessage());
-            }
+            System.out.println(inputArray[1]);
             
-            
-            System.out.println(input);
-            
-            //handle using the string command
+            //handle using the <STRING> command
             return true;
         }
         else 

@@ -6,7 +6,7 @@
  * @author Jerrett Fowler
  * @version 1.0 (July 2013)
  */
-public abstract class Command //Why use abstract: http://stackoverflow.com/questions/7262892/java-best-practices-put-get-subclass-objects-into-hashmap-that-expects-supercla
+public abstract class Command
 {
     public String secondWord;
     public String thirdWord;
