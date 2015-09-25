@@ -8,7 +8,7 @@
 public class SunkCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String name = "SUNK";
 
     /**
      * Constructor for objects of class SunkCommand
@@ -29,7 +29,12 @@ public class SunkCommand extends Command
     {
         if(getSecondWord() != null)
         {
-            System.out.println("Sunk");
+            Ship s = null;
+            s = (Ship)o;
+            
+            //if ship's
+            
+            System.out.println("You sunk my ship.");
             return true;
         }
         else 
@@ -37,5 +42,14 @@ public class SunkCommand extends Command
             System.out.println("You must enter a ship.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

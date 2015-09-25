@@ -8,7 +8,7 @@
 public class StartCommand extends Command
 {
     // instance variables
-    
+    private String name = "START";
 
     /**
      * Constructor for objects of class StartCommand
@@ -37,5 +37,14 @@ public class StartCommand extends Command
             System.out.println("START not used correctly.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

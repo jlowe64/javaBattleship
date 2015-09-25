@@ -9,8 +9,10 @@ public class Player
 {
     // instance variables
     private String playerName;
+    private boolean readyCheck = false;
     private boolean currentTurn = false;
     private boolean winnerOrLoser = false;
+    private boolean end = false;
 
     /**
      * Constructor for objects of class Player
@@ -61,5 +63,37 @@ public class Player
     public void setIWin(boolean b)
     {
         winnerOrLoser = b;
+    }
+    
+    /*
+     * Quit
+     */
+    public boolean getEnd()
+    {
+        return end;
+    }
+    
+    /*
+     * Set Winner
+     */
+    public void setEnd(boolean b)
+    {
+        end = b;
+    }
+    
+    /*
+     * Quit
+     */
+    public boolean getReady()
+    {
+        return readyCheck;
+    }
+    
+    /*
+     * Set Winner
+     */
+    public void setReady(boolean b)
+    {
+        readyCheck = b;
     }
 }

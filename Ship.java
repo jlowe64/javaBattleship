@@ -23,8 +23,13 @@ public class Ship
         this.hitPoints = size;
         this.size = size;
         this.orientation = direction;
+        
+        //check if valid row
         this.row = row;
+        
+        //check if valid column
         this.column = column;
+        
         this.shipID = id;
     }
     

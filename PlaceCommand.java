@@ -1,25 +1,25 @@
 
 /**
- * Write a description of class IntCommand here.
+ * Write a description of class ShipCommand here.
  * 
- * @author Jerrett Fowler
- * @version 1.0 (August 2013)
+ * @author Jerrett Fowler 
+ * @version 1.0 (September 2013)
  */
-public class IntCommand extends Command
+public class PlaceCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private String name = "INT";
+    private String name = "PLACE";
 
     /**
-     * Constructor for objects of class IntCommand
+     * Constructor for objects of class ShipCommand
      */
-    public IntCommand()
+    public PlaceCommand()
     {
         //
     }
 
     /**
-     * an integer
+     * ''SHIP_''<INT> _ <INT>
      * 
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
@@ -27,7 +27,10 @@ public class IntCommand extends Command
     @Override
     public boolean execute(Object o)
     {
-        System.out.println("Int");
+        Ship s = null;
+        s = (Ship)o;
+        
+        System.out.println("Place");
         return false;
     }
     

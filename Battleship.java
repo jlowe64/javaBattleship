@@ -1,6 +1,4 @@
 import java.awt.event.*; // Use some events
-//import java.awt.*; // Graphics
-//import javax.swing.*; // Use swing for GUI
 import java.util.*; // Util
 import java.io.*; //I/O
 import java.net.*; //Sockets
@@ -11,13 +9,21 @@ import java.net.*; //Sockets
  * @author Jerrett Fowler 
  * @version 1.2 (August 2013)
  */
-
-//public class Battleship extends JFrame implements MouseListener, WindowListener    
+ 
 public class Battleship
 {
+    
+    private enum GameState
+    {
+        INITIALISE, SERVERREADY, SERVERTURN
+    }
+    
+    private GameState gameState = GameState.INITIALISE;
     private Parser parser;
     private Protocol protocol;
     Player currentPlayer;
+    Grid grids;
+    Fleet fleet;
 
     /**
      * Main
@@ -25,7 +31,8 @@ public class Battleship
     public static void main(String[] args) throws IOException
     {
         int i = 0, portArg;
-        String arg, machine;
+        String arg = new String(); 
+        String machine = new String();
         boolean vflag = false;
         while (i < args.length && args[i].startsWith("-"))
         {
@@ -77,14 +84,13 @@ public class Battleship
         //set up fleet
         newFleet();
         //set up new grids
-        //createGrids();
+        createGrids();
         
         switch(gameState)
         {
             case "Client":
                 client(serverName, portNumber);
                 //player sets up grids, sends <READY> message
-                play();
                 System.out.println("Client Breaks");
                 break;
 
@@ -92,68 +98,11 @@ public class Battleship
                 host(portNumber);
                 //host randomly decides <FIRSTGO> and sends message to user on decision
                 //player sets up grids, sends <READY> message
-                play();
                 System.out.println("Host Breaks");
                 break;
                 
             default: System.err.println("That went wrong");
         }
-    }
-    
-    /**
-     * Main play routine. Loops until one player's fleet is sunk.
-     */
-    public void play()
-    {
-        printOpening();
-        
-        boolean end = false;
-        
-        //Main gameplay loop
-        while(!end)
-        {
-            Command command = parser.getCommand();
-            if(command == null)
-            {
-                System.out.println("Please enter your orders again, ");
-                System.out.println("and remember that orders are in ALL CAPS...");
-            }
-            else
-            {
-                end = command.execute(getPlayer());
-            }
-        }
-        
-        printClosing();
-    }
-    
-    /**
-     * Opening statement
-     */
-    private void printOpening()
-    {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println("Welcome to Battleships!");
-        System.out.println("Type 'help' if you need help.");
-        System.out.println("All commands are in ALL CAPS.");
-        System.out.println();
-    }
-    
-    /**
-     * Closing statement
-     */
-    private void printClosing()
-    {
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println("Sorry to see you go soldier.");
-        System.out.println("Game has ended.");
-        System.out.println();
     }
     
     /**
@@ -181,21 +130,17 @@ public class Battleship
             System.exit(1);
         }
         
-        while(!end)
-        {
-            //responds to <SUPPORTS> message with <YES> or <NO> to each
-            //items set as <NO> will go unsupported on the host
-            end = END.execute(getPlayer());
-            if (end == true)
-            {
-                try {
-                    connection.close();
-                } catch (IOException e) {
-                    System.err.println("Could not find close connection.");
-                }
-            }
-        }
+        //responds to <SUPPORTS> message with <YES> or <NO> to each
+        //items set as <NO> will go unsupported on the host
         
+        //Play Game
+        play();
+        
+        try {
+            connection.close();
+        } catch (IOException e) {
+            System.err.println("Could not find close connection.");
+        }
         //out.close();
         //in.close();
         
@@ -218,8 +163,6 @@ public class Battleship
         Command NO = protocol.getCommand("NO");
         Command END = protocol.getCommand("END");
         
-        
-        
         try {
             server = new ServerSocket(portNumber);
             System.out.println("Host set up on port: " + portNumber);
@@ -231,35 +174,161 @@ public class Battleship
         //listens for connection request
         Socket client = null;
         
-        while(!end)
-        {
-            try {
+        try {
                 System.out.println("Waiting on connection...");
                 client = server.accept();
                 OutputStream out = client.getOutputStream();
                 InputStream in  = client.getInputStream();
-            } catch (IOException e) {
+        } catch (IOException e) {
                 System.err.println("Cannot accept connection. Failed.");
                 System.exit(1);
-            }
-      
-            START.execute(getPlayer());
-            //sends <START> message to client
-            //sends a <SUPPORTS> message to client for each feature used
-            //when host cycles through all <SUPPORTS>, it sends an <END>
+        }
+        //START.execute(getPlayer());
+        //sends <START> message to client
+        //sends a <SUPPORTS> message to client for each feature used
+        //when host cycles through all <SUPPORTS>, it sends an <END>
+        
+        //Play Game
+        play();
+        
+        try {
+                server.close();
+        } catch (IOException e) {
+                //
+        }
+    }
+    
+    /**
+     * Main play routine. Loops until one player's fleet is sunk.
+     */
+    public void play()
+    {
+        printOpening();
+        
+        System.out.println("                 GAME BOARD");
+        
+        if(gameState == GameState.INITIALISE) //change this when READY works
+        {
+            grids.addShipFromFleet(fleet.getShipInFleet("SUBMARINE1"));
+            grids.addShipFromFleet(fleet.getShipInFleet("SUBMARINE2"));
+            grids.addShipFromFleet(fleet.getShipInFleet("SUBMARINE3"));
+            grids.addShipFromFleet(fleet.getShipInFleet("BATTLESHIP1"));
+            grids.addShipFromFleet(fleet.getShipInFleet("DESTROYER1"));
+            grids.addShipFromFleet(fleet.getShipInFleet("DESTROYER2"));
+            grids.printGrid();
+        }
+    
+        System.out.println();
+        System.out.println("Board is set up for you. Command for Placing a ship is not fully implemented.");
+        
+        //Main gameplay loop
+        while(!getPlayer().getEnd())
+        {
             
-            end = END.execute(getPlayer());
+            Command command = parser.getCommand();
             
-            if (end == true)
+            if(command == null)
             {
-                try {
-                    server.close();
-                } catch (IOException e) {
-                    //
+                System.out.println("Please enter your orders again, ");
+                System.out.println("and remember that orders are in ALL CAPS...");
+            }
+            
+            else if(command.getName().equals("READY"))
+            {
+                if(gameState == GameState.INITIALISE)
+                {
+                    command.execute(getPlayer());
+                }
+                else
+                {
+                    System.out.println("Already ready...?");
                 }
             }
+            
+            else if(command.getName().equals("END"))
+            {
+                command.execute(getPlayer());
+            }
+            
+            else if(command.getName().equals("HELP"))
+            {
+                command.execute(parser.getCommandWords()); 
+            }
+            
+            else if(command.getName().equals("TALK"))
+            {
+                command.execute(getPlayer()); 
+                
+                //send message to other player
+            }
+            
+            else if(command.getName().equals("FIRE"))
+            {
+                command.execute(getPlayer()); 
+                
+                //send message to other player
+            }
+            
+            else if(command.getName().equals("MISS"))
+            {
+                command.execute(getPlayer());
+            
+                //send message to other player
+            }
+            
+            else if(command.getName().equals("HIT"))
+            {
+                command.execute(getPlayer());
+       
+                //edit Grid
+                
+                //send message to other player
+            }
+            
+            else if(command.getName().equals("SUNK"))
+            {
+                command.execute(getPlayer());
+                
+                //remove ship from ArrayList
+            
+                //send message to other player
+            }
+            
+            else if(command.getName().equals("ILOSE"))
+            {
+                command.execute(getPlayer());
+            
+                //send message to other player
+            }
+
         }
         
+        printClosing();
+    }
+    
+    /**
+     * Opening statement
+     */
+    private void printOpening()
+    {
+        System.out.println();
+        System.out.println();
+        System.out.println("Welcome to Battleships!");
+        System.out.println("Type 'HELP' if you need help.");
+        System.out.println("All commands are in ALL CAPS.");
+        System.out.println();
+    }
+    
+    /**
+     * Closing statement
+     */
+    private void printClosing()
+    {
+        System.out.println();
+        System.out.println();
+        System.out.println("Sorry to see you go soldier.");
+        System.out.println("Game has ended.");
+        System.out.println();
     }
     
     /**
@@ -284,7 +353,7 @@ public class Battleship
      */
     public void newFleet()
     {
-        Fleet fleet = new Fleet();
+        fleet = new Fleet();
     }
 
     /**
@@ -293,34 +362,8 @@ public class Battleship
     private void createGrids()
     {
         // Create player grid
-        Grid grids = new Grid();
+        grids = new Grid();
+        
+       
     }
-    
-    /**
-     * Start of program
-     
-    public void init()
-    {
-        setSize(256, 256);
-    }*/
-    
-    /**
-     * Mouse Event Overrides
-     */
-    //public void mouseClicked(MouseEvent event) {}
-    //public void mouseEntered(MouseEvent event) {}
-    //public void mouseExited(MouseEvent event) {}
-    //public void mousePressed(MouseEvent event) {}
-    //public void mouseReleased(MouseEvent event) {}
-    
-    /**
-     * GFX Event Overrides
-     */
-    //public void windowActivated(WindowEvent event) {}
-    //public void windowClosed(WindowEvent event) {}
-    //public void windowClosing(WindowEvent event) {}
-    //public void windowDeactivated(WindowEvent event) {}
-    //public void windowDeiconified(WindowEvent event) {}
-    //public void windowIconified(WindowEvent event) {}
-    //public void windowOpened(WindowEvent event) {}
 }

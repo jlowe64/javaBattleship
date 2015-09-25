@@ -8,7 +8,7 @@
 public class MissCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String name = "MISS";
 
     /**
      * Constructor for objects of class MissCommand
@@ -29,6 +29,10 @@ public class MissCommand extends Command
     {
         if(getSecondWord() == null)
         {
+            //convert object
+            
+            //sent MISS to other player
+            
             System.out.println("Miss");
             return true;
         }
@@ -37,5 +41,14 @@ public class MissCommand extends Command
             System.out.println("MISS not used correctly.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }

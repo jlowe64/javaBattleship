@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.*;
 
 /**
  * Write a description of class TalkCommand here.
@@ -8,8 +10,9 @@
 public class TalkCommand extends Command
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    private String name = "TALK";
+    
+    
     /**
      * Constructor for objects of class TalkCommand
      */
@@ -29,8 +32,14 @@ public class TalkCommand extends Command
     {
         if(getSecondWord() != null)
         {
-            System.out.println("Talk");
-            //handle using the string command
+            Player p = null;
+            p = (Player)o;
+            String input = new String(getSecondWord());
+            String[] inputArray = input.split(" ", 2);
+            
+            System.out.println(inputArray[1]);
+            
+            //handle using the <STRING> command
             return true;
         }
         else 
@@ -38,5 +47,14 @@ public class TalkCommand extends Command
             System.out.println("Talk not used correctly. You must send a message after the command.");
             return false;
         }
+    }
+    
+    /**
+     * Return String of name of command
+     */
+    @Override
+    public String getName()
+    {
+        return name;
     }
 }
